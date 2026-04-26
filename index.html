@@ -697,6 +697,50 @@
         .q-card:nth-child(4) { animation-delay: 0.08s; }
         .q-card:nth-child(5) { animation-delay: 0.1s; }
 
+        /* ===== TABLE STYLING ===== */
+        .med-table, .ans-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin: 14px 0;
+            font-size: 0.82rem;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            background: var(--bg2);
+        }
+        .med-table th, .ans-table th {
+            background: var(--bg3);
+            color: var(--accent);
+            text-align: left;
+            padding: 12px 16px;
+            font-family: var(--font-head);
+            font-weight: 700;
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border-bottom: 1px solid var(--border);
+        }
+        .med-table td, .ans-table td {
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-muted);
+            vertical-align: top;
+            line-height: 1.5;
+        }
+        .med-table tr:last-child td, .ans-table tr:last-child td {
+            border-bottom: none;
+        }
+        .med-table tr:hover, .ans-table tr:hover {
+            background: rgba(255,255,255,0.03);
+        }
+        .ans-table strong, .med-table strong { color: var(--text); font-weight: 700; }
+        .med-table td.italic { font-style: italic; color: var(--text-muted); opacity: 0.9; }
+
+        /* Column Widths & Alignment */
+        .med-table th:first-child, .ans-table th:first-child { width: 35%; border-right: 1px solid var(--border); }
+        .med-table td:first-child, .ans-table td:first-child { border-right: 1px solid var(--border); font-weight: 600; color: var(--text); }
+
         /* ===== RESPONSIVE ===== */
         @media (max-width: 480px) {
             .q-text { font-size: 0.82rem; }
