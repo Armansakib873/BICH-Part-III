@@ -809,7 +809,7 @@
             pointer-events: none;
             z-index: 1001;
         }
-        .menu-item.has-sub:hover .sub-menu {
+        .menu-item.has-sub.show-sub .sub-menu {
             opacity: 1;
             transform: scale(1) translateX(-4px);
             pointer-events: auto;
@@ -824,7 +824,7 @@
     <div class="header-top">
         <div class="app-brand">
             <h1>HealthTech Q-Bank</h1>
-            <p>Part–III &nbsp;·&nbsp; University of Dhaka</p>
+            <p>Part–III &nbsp;·&nbsp; Created By: Arman | Batch 14</p>
         </div>
         <div class="header-actions">
             <button class="icon-btn" id="bookmarkBtn" title="Saved">
@@ -4379,9 +4379,28 @@ function init() {
     menuBtn.addEventListener("click", (e) => {
         e.stopPropagation();
         moreMenu.classList.toggle("show");
+        // Close sub-menus when closing main menu
+        if (!moreMenu.classList.contains("show")) {
+            document.querySelectorAll('.menu-item.has-sub').forEach(item => item.classList.remove('show-sub'));
+        }
     });
+
+    // Sub-menu Toggle
+    document.querySelectorAll('.menu-item.has-sub').forEach(item => {
+        item.addEventListener('click', (e) => {
+            e.stopPropagation();
+            // Close other sub-menus in the same parent
+            const siblings = item.parentElement.querySelectorAll('.menu-item.has-sub');
+            siblings.forEach(sib => {
+                if (sib !== item) sib.classList.remove('show-sub');
+            });
+            item.classList.toggle('show-sub');
+        });
+    });
+
     document.addEventListener("click", () => {
         moreMenu.classList.remove("show");
+        document.querySelectorAll('.menu-item.has-sub').forEach(item => item.classList.remove('show-sub'));
     });
 }
 
